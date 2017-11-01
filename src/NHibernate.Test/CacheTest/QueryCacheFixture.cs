@@ -60,19 +60,5 @@ namespace NHibernate.Test.CacheTest
 				s.Flush();
 			}
 		}
-
-		[Test]
-		public void QueryCacheWithScalarFunctionThatReturnsInt()
-		{
-			using (ISession s = OpenSession())
-			{
-				int result = s
-					.CreateSQLQuery("SELECT [dbo].[TestQueryCache] ()")
-					.SetCacheable(true)
-					.UniqueResult<int>();
-
-				Assert.IsNotNull(result);
-			}
-		}
 	}
 }
